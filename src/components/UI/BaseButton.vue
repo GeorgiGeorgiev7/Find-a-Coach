@@ -1,5 +1,5 @@
 <template>
-  <button v-if="!link">
+  <button v-if="!isLink">
     <slot />
   </button>
   <router-link v-else :to="to">
@@ -15,7 +15,7 @@ export default {
       required: false,
       default: false,
     },
-    toolbar: {
+    to: {
       type: String,
       required: false,
     },

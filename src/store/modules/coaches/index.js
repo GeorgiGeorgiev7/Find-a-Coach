@@ -20,17 +20,9 @@ export default {
                     id: '2',
                     firstName: 'Niko',
                     lastName: 'Petrov',
-                    areas: ['python', 'web3', 'games'],
+                    areas: ['python', 'defi'],
                     description: 'The middle choice',
                     rate: 30
-                },
-                {
-                    id: '3',
-                    firstName: 'Daniel',
-                    lastName: 'Dudev',
-                    areas: ['rowing', 'cayak', 'swimming'],
-                    description: 'Not the best choice',
-                    rate: 20
                 }
             ]
         };

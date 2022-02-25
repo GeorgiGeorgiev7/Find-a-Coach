@@ -25,18 +25,23 @@ export default {
   margin-right: 0.5rem;
 }
 
-.frontend {
+.javascript {
   background-color: #3d008d;
   color: white;
 }
 
-.backend {
+.defi {
   background-color: #71008d;
   color: white;
 }
 
-.career {
+.blockchain {
   background-color: #8d006e;
+  color: white;
+}
+
+.python {
+  background-color: #8d004e;
   color: white;
 }
 </style>
