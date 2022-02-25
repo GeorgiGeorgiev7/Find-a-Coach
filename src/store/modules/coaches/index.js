@@ -14,7 +14,7 @@ export default {
                     lastName: 'Nikolaev',
                     areas: ['javascript', 'defi', 'blockchain'],
                     description: 'The best choice',
-                    hourlyRate: 40
+                    rate: 40
                 },
                 {
                     id: '2',
@@ -22,7 +22,7 @@ export default {
                     lastName: 'Petrov',
                     areas: ['python', 'web3', 'games'],
                     description: 'The middle choice',
-                    hourlyRate: 30
+                    rate: 30
                 },
                 {
                     id: '3',
@@ -30,7 +30,7 @@ export default {
                     lastName: 'Dudev',
                     areas: ['rowing', 'cayak', 'swimming'],
                     description: 'Not the best choice',
-                    hourlyRate: 20
+                    rate: 20
                 }
             ]
         };
