@@ -12,7 +12,7 @@ export default {
                     id: '1',
                     firstName: 'Gogo',
                     lastName: 'Nikolaev',
-                    areas: ['javascript', 'defi', 'blockchain'],
+                    areas: ['javascript', 'blockchain', 'defi'],
                     description: 'The best choice',
                     rate: 40
                 },
