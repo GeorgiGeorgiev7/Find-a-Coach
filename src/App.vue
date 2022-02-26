@@ -10,6 +10,9 @@ export default {
   components: {
     "the-header": TheHeader,
   },
+  created() {
+    this.$store.dispatch("attemptLogin")
+  },
 }
 </script>
 
