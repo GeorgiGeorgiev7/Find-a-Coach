@@ -2,7 +2,7 @@
   <base-dialog :show="!!error" title="An error occurred" @close="handleError">
     <p>{{ error }}</p>
   </base-dialog>
-  <base-spinner v-if="isLoading"/>
+  <base-spinner v-if="isLoading" />
   <base-card>
     <form @submit.prevent="submitForm">
       <div class="form-control">
@@ -67,12 +67,15 @@ export default {
 
       this.isLoading = true
 
+      const actionPayload = {
+        email: this.email,
+        password: this.password,
+      }
       try {
         if (this.mode === "signup") {
-          await this.$store.dispatch("signup", {
-            email: this.email,
-            password: this.password,
-          })
+          await this.$store.dispatch("signup", actionPayload)
+        } else {
+          await this.$store.dispatch("login", actionPayload)
         }
       } catch (err) {
         this.error =

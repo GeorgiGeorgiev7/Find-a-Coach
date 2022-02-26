@@ -38,8 +38,6 @@ export default {
 
       if (!this.formIsValid) return
 
-      console.log(this.$route)
-
       const request = {
         email: this.email,
         message: this.message,

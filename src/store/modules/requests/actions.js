@@ -20,21 +20,28 @@ export default {
     },
     async fetchRequests(context) {
         const coachId = context.rootGetters.userId;
-        const response = await fetch(`https://find-a-coach-470b3-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json`);
+
+        const token = context.rootGetters.token;
+
+        const response = await fetch(`https://find-a-coach-470b3-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json?auth=${token}`);
 
         if (!response.ok) {
             throw new Error('Failed to fetch requests');
         }
 
         const responseData = await response.json();
+        if (!responseData) {
+            context.commit('setRequests', []);
+        } else {
+            const requests = [];
+            for (const [requestId, request] of Object.entries(responseData)) {
+                request.id = requestId;
+                requests.push(request);
+            }
 
-        const requests = [];
-        for (const [requestId, request] of Object.entries(responseData)) {
-            request.id = requestId;
-            requests.push(request);
+            context.commit('setRequests', requests);
         }
 
-        context.commit('setRequests', requests);
 
     }
 }
