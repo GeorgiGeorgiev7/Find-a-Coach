@@ -11,6 +11,9 @@ import UserAuth from "../views/auth/UserAuth.vue";
 
 import NotFound from "../views/NotFound.vue";
 
+import store from '../store';
+
+
 const routes = [
   { path: "/", redirect: "/coaches" },
   { path: "/coaches", component: CoachesList },
@@ -20,15 +23,25 @@ const routes = [
     props: true,
     children: [{ path: "contact", component: ContactCoach }],
   },
-  { path: "/register", component: CoachRegistration },
-  { path: "/requests", component: ReceivedRequests },
-  { path: "/auth", component: UserAuth },
+  { path: "/register", component: CoachRegistration, meta: { requiresAuth: true } },
+  { path: "/requests", component: ReceivedRequests, meta: { requiresAuth: true } },
+  { path: "/auth", component: UserAuth, meta: { requiresNonAuth: true } },
   { path: "/:notFound(.*)", component: NotFound },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, _, next) => {
+  if (to.meta.requiresAuth && !store.getters.isAuth) {
+    next('/auth');
+  } else if (to.meta.requiresNonAuth && store.getters.isAuth) {
+    next('/coaches');
+  } else {
+    next();
+  }
 });
 
 export default router;

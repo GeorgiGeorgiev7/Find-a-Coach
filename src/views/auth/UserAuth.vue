@@ -77,6 +77,7 @@ export default {
         } else {
           await this.$store.dispatch("login", actionPayload)
         }
+        this.$router.replace("/")
       } catch (err) {
         this.error =
           err.message || "Something went wrong. Please try again later"
