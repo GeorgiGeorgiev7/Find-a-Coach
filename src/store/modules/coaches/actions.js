@@ -29,8 +29,12 @@ export default {
 
         const responseData = await response.json();
 
-        const coaches = [...Object.values(responseData)];
+        if (!responseData) {
+            context.commit('setCoaches', []);
+        } else {
+            const coaches = [...Object.values(responseData)];
 
-        context.commit('setCoaches', coaches);
+            context.commit('setCoaches', coaches);
+        }
     }
 };

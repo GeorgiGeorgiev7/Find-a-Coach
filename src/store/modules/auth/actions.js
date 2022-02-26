@@ -45,7 +45,7 @@ export default {
 
         const responseData = await response.json();
 
-        const expirationDate = new Date().getTime() + 5000;
+        const expirationDate = new Date().getTime() + +responseData.expiresIn * 1000;
 
         localStorage.setItem('token', responseData.token);
         localStorage.setItem('userId', responseData.localId);
@@ -53,7 +53,7 @@ export default {
 
         timer = setTimeout(() => {
             context.dispatch('logout');
-        }, 5000);
+        }, +responseData.expiresIn * 1000);
 
         context.commit('setUser', {
             token: responseData.idToken,
