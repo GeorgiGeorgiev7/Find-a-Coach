@@ -7,6 +7,8 @@ import CoachRegistration from "../views/coaches/CoachRegistration.vue";
 import ContactCoach from "../views/requests/ContactCoach.vue";
 import ReceivedRequests from "../views/requests/ReceivedRequests.vue";
 
+import UserAuth from "../views/auth/UserAuth.vue";
+
 import NotFound from "../views/NotFound.vue";
 
 const routes = [
@@ -20,6 +22,7 @@ const routes = [
   },
   { path: "/register", component: CoachRegistration },
   { path: "/requests", component: ReceivedRequests },
+  { path: "/auth", component: UserAuth },
   { path: "/:notFound(.*)", component: NotFound },
 ];
 
