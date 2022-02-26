@@ -33,6 +33,20 @@ export default {
         this.formIsValid = false
       }
     },
+    submitForm() {
+      this.validateForm()
+
+      if (!this.formIsValid) return
+
+      const request = {
+        email: this.email,
+        message: this.message,
+        coachId: this.$route.id,
+      }
+
+      this.$store.dispatch("requests/contactCoach", request)
+      this.$router.replace("/")
+    },
   },
 }
 </script>
