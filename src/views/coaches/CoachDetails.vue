@@ -40,7 +40,9 @@ export default {
       return this.selectedCoach.firstName + " " + this.selectedCoach.lastName
     },
     contactLink() {
-      return this.$route.path + "/contact"
+      return this.$route.path.endsWith("/contact")
+        ? this.$route.path
+        : this.$route.path + "/contact"
     },
     areas() {
       return this.selectedCoach.areas
