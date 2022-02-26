@@ -22,8 +22,7 @@ export default {
         const response = await fetch(`https://find-a-coach-470b3-default-rtdb.europe-west1.firebasedatabase.app/coaches.json`);
 
         if (!response.ok) {
-            // add err handling
-            return;
+            throw new Error('Failed to fetch! Please try again later.');
         }
 
         const responseData = await response.json();
