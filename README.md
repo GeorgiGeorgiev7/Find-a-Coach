@@ -27,3 +27,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Login with:
  - email: test@test.com
  - password: 123456
+
+URL: https://find-a-coach-470b3.web.app/
