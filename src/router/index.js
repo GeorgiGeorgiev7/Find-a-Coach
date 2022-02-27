@@ -1,15 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import CoachesList from "../views/coaches/CoachesList.vue";
-import CoachDetails from "../views/coaches/CoachDetails.vue";
-import CoachRegistration from "../views/coaches/CoachRegistration.vue";
+const CoachesList = () => import("../views/coaches/CoachesList.vue");
+const CoachDetails = () => import("../views/coaches/CoachDetails.vue");
+const CoachRegistration = () => import("../views/coaches/CoachRegistration.vue");
 
-import ContactCoach from "../views/requests/ContactCoach.vue";
-import ReceivedRequests from "../views/requests/ReceivedRequests.vue";
 
-import UserAuth from "../views/auth/UserAuth.vue";
+const ContactCoach = () => import("../views/requests/ContactCoach.vue");
+const ReceivedRequests = () => import("../views/requests/ReceivedRequests.vue");
 
-import NotFound from "../views/NotFound.vue";
+const UserAuth = () => import("../views/auth/UserAuth.vue");
+
+const NotFound = () => import("../views/NotFound.vue");
 
 import store from '../store';
 
