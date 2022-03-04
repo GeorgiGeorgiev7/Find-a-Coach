@@ -32,14 +32,14 @@
 <script>
 export default {
   props: ["id"],
-  data() {
-    return {
-      selectedCoach: null,
-    }
-  },
   computed: {
+    selectedCoach() {
+      return this.$store
+        .getters["coaches/coaches"]
+        .find((coach) => coach.id === this.id)
+    },
     fullName() {
-      return this.selectedCoach.firstName + " " + this.selectedCoach.lastName
+      return this.selectedCoach?.firstName + " " + this.selectedCoach?.lastName
     },
     contactLink() {
       return this.$route.path.endsWith("/contact")
@@ -47,19 +47,20 @@ export default {
         : this.$route.path + "/contact"
     },
     areas() {
-      return this.selectedCoach.areas
+      return this.selectedCoach?.areas
     },
     rate() {
-      return this.selectedCoach.rate
+      return this.selectedCoach?.rate
     },
     description() {
-      return this.selectedCoach.description
+      return this.selectedCoach?.description
     },
   },
   created() {
-    this.selectedCoach = this.$store.getters["coaches/coaches"].find(
-      (coach) => coach.id === this.id
-    )
+    const loadedCoaches = this.$store.getters["coaches/coaches"]
+    if (loadedCoaches.length === 0) {
+      this.$store.dispatch("coaches/loadCoaches")
+    }
   },
 }
 </script>
