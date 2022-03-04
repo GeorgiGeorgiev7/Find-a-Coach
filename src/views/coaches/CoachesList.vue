@@ -1,43 +1,51 @@
 <template>
-  <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
-    <p>{{ error }}</p>
-  </base-dialog>
-  <section>
-    <coach-filter @change-filter="setFilters" />
-  </section>
-  <section>
-    <base-card>
-      <div class="controls">
-        <base-button class="outline" @click="loadCoaches">Refresh</base-button>
-        <base-button
-          v-if="isAuth && !isCoach && !isLoading"
-          :isLink="true"
-          to="/register"
-          >Register as a Coach</base-button
-        >
-      </div>
-      <div v-if="isLoading">
-        <base-spinner />
-      </div>
-      <ul v-else-if="hasCoaches">
-        <coach-item
-          v-for="coach in filteredCoaches"
-          :key="coach.id"
-          :id="coach.id"
-          :firstName="coach.firstName"
-          :lastName="coach.lastName"
-          :rate="coach.rate"
-          :areas="coach.areas"
-        >
-        </coach-item>
-      </ul>
-      <h3 v-else>
-        No existing coaches. Maybe
-        <router-link to="/register">register</router-link>
-        as one?
-      </h3>
-    </base-card>
-  </section>
+  <div>
+    <base-dialog
+      :show="!!error"
+      title="An error occurred!"
+      @close="handleError"
+    >
+      <p>{{ error }}</p>
+    </base-dialog>
+    <section>
+      <coach-filter @change-filter="setFilters" />
+    </section>
+    <section>
+      <base-card>
+        <div class="controls">
+          <base-button class="outline" @click="loadCoaches"
+            >Refresh</base-button
+          >
+          <base-button
+            v-if="isAuth && !isCoach && !isLoading"
+            :isLink="true"
+            to="/register"
+            >Register as a Coach</base-button
+          >
+        </div>
+        <div v-if="isLoading">
+          <base-spinner />
+        </div>
+        <ul v-else-if="hasCoaches">
+          <coach-item
+            v-for="coach in filteredCoaches"
+            :key="coach.id"
+            :id="coach.id"
+            :firstName="coach.firstName"
+            :lastName="coach.lastName"
+            :rate="coach.rate"
+            :areas="coach.areas"
+          >
+          </coach-item>
+        </ul>
+        <h3 v-else>
+          No existing coaches. Maybe
+          <router-link to="/register">register</router-link>
+          as one?
+        </h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>

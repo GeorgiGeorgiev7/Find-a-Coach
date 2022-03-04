@@ -1,16 +1,22 @@
 <template>
-  <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
-    <p>{{ error }}</p>
-  </base-dialog>
-  <section>
-    <base-card>
-      <div v-if="isLoading">
-        <base-spinner />
-      </div>
-      <h2>Register as a coach now!</h2>
-      <coach-form @save-data="saveData" />
-    </base-card>
-  </section>
+  <div>
+    <base-dialog
+      :show="!!error"
+      title="An error occurred!"
+      @close="handleError"
+    >
+      <p>{{ error }}</p>
+    </base-dialog>
+    <section>
+      <base-card>
+        <div v-if="isLoading">
+          <base-spinner />
+        </div>
+        <h2>Register as a coach now!</h2>
+        <coach-form @save-data="saveData" />
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>

@@ -1,28 +1,30 @@
 <template>
-  <base-dialog :show="!!error" title="An error occurred" @close="handleError">
-    <p>{{ error }}</p>
-  </base-dialog>
-  <base-spinner v-if="isLoading" />
-  <base-card>
-    <form @submit.prevent="submitForm">
-      <div class="form-control">
-        <label for="email">E-Mail</label>
-        <input type="email" id="email" v-model.trim="email" />
-      </div>
-      <div class="form-control">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model.trim="password" />
-      </div>
-      <p v-if="!isFormValid">
-        Please enter a valid email and password (password must be at least 6
-        characters long).
-      </p>
-      <base-button>{{ submitButtonCaption }}</base-button>
-      <base-button type="button" class="flat" @click="toggleMode">{{
-        switchModeButtonCaption
-      }}</base-button>
-    </form>
-  </base-card>
+  <div>
+    <base-dialog :show="!!error" title="An error occurred" @close="handleError">
+      <p>{{ error }}</p>
+    </base-dialog>
+    <base-spinner v-if="isLoading" />
+    <base-card>
+      <form @submit.prevent="submitForm">
+        <div class="form-control">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" v-model.trim="email" />
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model.trim="password" />
+        </div>
+        <p v-if="!isFormValid">
+          Please enter a valid email and password (password must be at least 6
+          characters long).
+        </p>
+        <base-button>{{ submitButtonCaption }}</base-button>
+        <base-button type="button" class="flat" @click="toggleMode">{{
+          switchModeButtonCaption
+        }}</base-button>
+      </form>
+    </base-card>
+  </div>
 </template>
 
 <script>
