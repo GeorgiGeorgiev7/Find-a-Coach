@@ -1,11 +1,10 @@
 # Find A Coach
 
 ### Description 
-A Single Page Application built with Vue.js where you can search for a coach 
-or register as one. 
+A Vue3 Fiver-like SPA built with Vue-Router and Vuex libraries using the Options API. <br> Using Firebase for BAAS.
 
 
-### Test login credentials:
+#### Test login credentials:
  - email: test@test.com
  - password: 123456
 
